@@ -853,7 +853,7 @@ void firewall_log( char* fmt, ...)
     return;
 }
 
-#ifdef WAN_FAILOVER_SUPPORTED
+#if defined(WAN_FAILOVER_SUPPORTED) || defined(RDKB_EXTENDER_ENABLED)
 unsigned int Get_Device_Mode()
 {
 	FIREWALL_DEBUG("Inside Get_Device_Mode\n");
@@ -872,7 +872,7 @@ unsigned int Get_Device_Mode()
 }
 #endif
 
-#ifdef WAN_FAILOVER_SUPPORTED
+#if defined(WAN_FAILOVER_SUPPORTED) || defined(RDKB_EXTENDER_ENABLED)
 
 int create_socket() 
 {
@@ -909,7 +909,8 @@ char* get_iface_ipaddr(const char* iface_name)
 
       return (inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
 }
-
+#endif
+#ifdef WAN_FAILOVER_SUPPORTED
 bool isServiceNeeded()
 {
         FIREWALL_DEBUG("Inside isServiceNeeded\n");

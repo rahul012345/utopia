@@ -153,7 +153,7 @@ char speedboostportsv6[32];
 #endif
 #endif
 
-#ifdef WAN_FAILOVER_SUPPORTED
+#if defined(WAN_FAILOVER_SUPPORTED) || defined(RDKB_EXTENDER_ENABLED)
 
 #define PSM_MESH_WAN_IFNAME "dmsb.Mesh.WAN.Interface.Name"
 int mesh_wan_ipv6_num = 0;

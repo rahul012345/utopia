@@ -288,7 +288,7 @@ extern char speedboostportsv6[32];
 #define MAX_LEN_IPV6_INF 32
 #define MAX_BUFF_LEN 350
 
-#ifdef WAN_FAILOVER_SUPPORTED
+#if defined(WAN_FAILOVER_SUPPORTED) || defined(RDKB_EXTENDER_ENABLED)
 #if !defined(_PLATFORM_RASPBERRYPI_) && !defined(_PLATFORM_BANANAPI_R4_)
 void  redirect_dns_to_extender(FILE *nat_fp,int family);
 #endif //_PLATFORM_RASPBERRYPI_ && _PLATFORM_BANANAPI_R4_
@@ -339,7 +339,7 @@ void updateAmenityNetworkRules(FILE *filter_fp , FILE *mangle_fp,int iptype);
 #endif /*AMENITIES_NETWORK_ENABLED*/
 
 
-#ifdef WAN_FAILOVER_SUPPORTED
+#if  defined(WAN_FAILOVER_SUPPORTED) || defined(RDKB_EXTENDER_ENABLED)
 
 #define PSM_MESH_WAN_IFNAME "dmsb.Mesh.WAN.Interface.Name"
 extern int mesh_wan_ipv6_num;
